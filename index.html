@@ -1,75 +1,86 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Another page</title>
-    <link rel="stylesheet" type="text/css" href="test4.css" /> 
-    <h1>test</h1>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Another page</title>
+<link rel="stylesheet" type="text/css" href="test4.css" /> 
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Hide scrollbars */
+    color: blue; /* Default text color */
+    font-family: Arial; /* Default font family */
+    background-image: url(read.gif); /* Default background image */
+  }
+
+  p {
+    color: red; /* Default paragraph text color */
+  }
+
+  h2 {
+    text-align: left; /* Default h2 text alignment */
+  }
+
+  #subheading {
+    color: green; /* Default color for #subheading */
+    font-family: "Papyrus"; /* Default font family for #subheading */
+  }
+
+  #dvdLogo {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+  }
+</style>
 </head> 
-    <body>
-        <h2><font color="cyan"> This is a test heading using an element tag</font></h2>
-        <h2>This is a test heading using an inline style</h2>
-        This is ordinary text between headings<br />
-        <h2>This is another heading</h2>
-        This is ordinary text between headings</br />
-        <h2>And still another heading</h2>
-        <h1>This is an extra h1-level heading</h1>
-        <p>This is ordinary text contained within paragraph tags</p>
-        <p style="color: rgb(216, 126, 23, 0.5);">Another paragraph but different, with an opacity value</p>
-        <p style="color: #ABDCBA;">This paragraph color was done with hexidecimal</p>
-        <h1 id="subheading">This h1 line will be different to the other h1 headings</h1>
-<img src="./read.gif" width="100" height="100">
-<p style="color: white;">^small rat</p>
+<body>
+<h1>test</h1>
+<h2><font color="cyan">This is a test heading using an element tag</font></h2>
+<h2>This is a test heading using an inline style</h2>
+This is ordinary text between headings<br />
+<h2>This is another heading</h2>
+This is ordinary text between headings<br />
+<h2>And still another heading</h2>
+<h1>This is an extra h1-level heading</h1>
+<p>This is ordinary text contained within paragraph tags</p>
+<p style="color: rgb(216, 126, 23, 0.5);">Another paragraph but different, with an opacity value</p>
+<p style="color: #ABDCBA;">This paragraph color was done with hexadecimal</p>
+<h1 id="subheading">This h1 line will be different to the other h1 headings</h1>
+<img src="./read.gif" width="100" height="100" id="dvdLogo">
+<p style="color: white;">small bouncing rat woah look at it go</p>
 <img src="./spin.webp" width="512" height="512">
 <span style="background-color: #FFFF00">Random highlighted text.</span>
-<!--I stole this from a random site, its code for a scrollable comment box-->
-<!--
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    main {
-      padding: 20px;
-      display: block;
-      min-height: 100vh;
-      min-width: 100vh;
+<script>
+  const dvdLogo = document.getElementById('dvdLogo');
+  let x = 0;
+  let y = 0;
+  let dx = 5; // Horizontal speed
+  let dy = 5; // Vertical speed
+
+  function moveLogo() {
+    x += dx;
+    y += dy;
+
+    const maxX = window.innerWidth - dvdLogo.width;
+    const maxY = window.innerHeight - dvdLogo.height;
+
+    if (x <= 0 || x >= maxX) {
+      dx = -dx; // Reverse horizontal direction
     }
-    h2 {
-      text-align: center;
-      color: #cbd3df;
+
+    if (y <= 0 || y >= maxY) {
+      dy = -dy; // Reverse vertical direction
     }
-    .comment-section {
-      max-height: 50vh;
-      max-width: 100%;
-      background-color: #3c4147;
-      overflow-y: scroll;
-    }
-    .comment {
-     height: 10%;
-      padding: 2%;
-      margin: 2%;
-      background-color: #ffff;
-      color: black;
-    }
-  </style>
-    <h2>Scrollable Comment Box Code</h2>
-    <main>
-      <div class="comment-section">
-        <div class="comment">This is first comment.</div>
-        <div class="comment">This is second comment.</div>
-        <div class="comment">This is third comment.</div>
-        <div class="comment">This is fourth comment.</div>
-        <div class="comment">This is fifth comment.</div>
-        <div class="comment">This is sixth comment.</div>
-    </div>
-    </main>
-    -->
-<!--This is a comment--> 
-<!--
-fwf
-fw
-fe
-comment
-f
-Ffw
--->
+
+    dvdLogo.style.left = x + 'px';
+    dvdLogo.style.top = y + 'px';
+
+    requestAnimationFrame(moveLogo);
+  }
+
+  moveLogo();
+</script>
 </body>
 </html>
